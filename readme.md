@@ -33,7 +33,7 @@ All data collected by this program is stored within the ./data directory. You ca
 
 scanned | _ | _
 --- | --- | ---
-id | INTEGER | `PRIMARY KEY` `AUTOINCREMENT`
+id | `INTEGER` | `PRIMARY KEY` `AUTOINCREMENT`
 url | `TEXT` | `NOT NULL`
 httpCode | `VARCHAR(255)` | `NOT NULL`
 scraped | `INTEGER(1)` | `NOT NULL`
