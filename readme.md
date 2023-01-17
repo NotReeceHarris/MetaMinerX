@@ -24,5 +24,9 @@ It's important to note that when creating plugins, it's crucial to consider the 
 
 You can easily disable a plugin by adding an underscore (_) at the start of the file name. For example, `plugin.js` will run while `_plugin.js` will not run.
 
+## Performance
+
+The performance of this program depends on your internet connection speed and bandwidth. The faster your connection, the faster you'll be able to crawl and scrape. When creating plugins, try to make them asynchronous to avoid increasing the time matrix per scrape.
+
 ## Discalmer
 This program is intended for lawful and ethical use only. It is meant to be used by data scientists and researchers to collect data needed for their work. It is not intended for illegal activities, and the developer of this program is not responsible for any misuse or illegal actions taken by users of this program. Please use this program in compliance with all applicable laws and regulations.
