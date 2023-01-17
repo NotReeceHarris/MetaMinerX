@@ -17,7 +17,7 @@ if (fs.existsSync('./data/vault.db')) {
     const plugins = require('./src/plugins')
 
     console.log(ascii.start)
-    console.log(`[1] Start crawling\n[2] Start mining\n[3] Verify plugins\n[4] Create plugins\n[5] View stats\n[6] Purge data\n[7] Exit\n`)
+    console.log(`[1] Start crawling\n[2] Start mining\n[3] Verify plugins\n[4] Create plugin\n[5] View stats\n[6] Purge data\n[7] Exit\n`)
 
     rl.question('Enter your choice: ', (choice) => {
         switch (choice) {
@@ -80,13 +80,7 @@ if (fs.existsSync('./data/vault.db')) {
 
                 break;
             case '6':
-                const directory = './data';
-                const fsextra = require('fs-extra');
-
-                fsextra.remove(directory, (err) => {
-                    if (err) return console.error(err);
-                    console.log('deleted successfully');
-                });
+                require('fs-extra').remove('./data', (err) => {if (err) {console.log('It seems like the data directory is busy, please try deleting "./data" manually')} else {console.log('Purged successfully');}});
                 break;
             case '7':
                 console.log('Exiting...');
@@ -108,7 +102,7 @@ if (fs.existsSync('./data/vault.db')) {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         url TEXT NOT NULL,
         httpCode VARCHAR(255) NOT NULL,
-        scraped INTEGER NOT NULL
+        scraped INTEGER(1) NOT NULL
     )`);
     
     db.run(`CREATE TABLE IF NOT EXISTS queue (
