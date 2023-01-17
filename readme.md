@@ -1,5 +1,9 @@
 ![](https://github.com/NotReeceHarris/NotReeceHarris/blob/main/cdn/metaminerxbanner.png?raw=true)
 
+<p align="center">
+<a href="#installation">Installation</a> | <a href="#usage">Usage</a> | <a href="#plugins">Plugins</a> | <a href="#access-collected-data">Access collected data</a> | <a href="#performance">Performance</a> | <a href="#discalmer">Discalmer</a>
+</p>
+
 ## Installation
 
 Before you can use this program, you'll need to have Node.js installed on your computer. Node.js version 0.10 or higher is required. You can download and install Node.js from the official website (https://nodejs.org/).
