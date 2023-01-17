@@ -25,7 +25,7 @@ It's important to note that when creating plugins, it's crucial to consider the 
 
 You can easily disable a plugin by adding an underscore (_) at the start of the file name. For example, `plugin.js` will run while `_plugin.js` will not run.
 
-> Read more about creating plugins [here](https://github.com/NotReeceHarris/MetaMinerX/tree/plugins), if you have created a plugin you want to share think about creating a pull request in the `plugins` branch
+> Read more about creating plugins [here](https://github.com/NotReeceHarris/MetaMinerX/tree/plugins), if you have created a plugin you want to share think about creating a pull request in the [`plugins`](https://github.com/NotReeceHarris/MetaMinerX/tree/plugins) branch
 
 
 ## Access collected data
