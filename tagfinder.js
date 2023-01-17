@@ -1,3 +1,5 @@
+const cheerio = require('cheerio');
+
 /* 
 Disclaimer: By using our open source program to create plugins, 
 you are agreeing to comply with all applicable laws and regulations 
