@@ -1,11 +1,11 @@
 /* Please only run this plugin on websites that allow scraping of email addresses */
 
-pluginInfo = {
-    'name': 'Email Scraper',
-    'description': 'This plugin scraps emails off webpages.',
-    'version': '1.0.0',
-    'author': 'Reece Harris'
-}
+const pluginInfo = {
+	'name': 'Email Scraper',
+	'description': 'This plugin scraps emails off webpages.',
+	'version': '1.0.0',
+	'author': 'Reece Harris'
+};
 
 /**
 * @param {string} url The target url.
@@ -13,16 +13,16 @@ pluginInfo = {
 * @param {string} response The target urls response.
 * @param {function} callback The store the loot harvested
 */
-function logic(url, html, _response, callback) {
-    const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
-    const emails = html.match(emailRegex);
+function logic(_url, html, _response, callback) {
+	const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+	const emails = html.match(emailRegex);
     
-    if (emails) {
-        emails.forEach(email => {
-            callback(email)
-        });
-    }
+	if (emails) {
+		emails.forEach(email => {
+			callback(email);
+		});
+	}
 }
 
-module.exports = {pluginInfo, logic}
+module.exports = {pluginInfo, logic};
     

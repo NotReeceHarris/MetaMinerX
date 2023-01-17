@@ -1,11 +1,11 @@
 const fs = require('fs');
 
-const pluginDir = './plugins'
+const pluginDir = './plugins';
 
 if (!fs.existsSync(pluginDir)) {fs.mkdirSync(pluginDir);}     
 
 function generatePlugin(name) {
-    fs.writeFile(`${pluginDir}/${name.toLowerCase().replaceAll(' ', '-').replaceAll('/', '-').replace(/[\r\n]/g, '')}.js`,`/* 
+	fs.writeFile(`${pluginDir}/${name.toLowerCase().replaceAll(' ', '-').replaceAll('/', '-').replace(/[\r\n]/g, '')}.js`,`/* 
 Disclaimer: By using our open source program to create plugins, 
 you are agreeing to comply with all applicable laws and regulations 
 regarding web scraping, including but not limited to copyright laws. 
@@ -16,8 +16,8 @@ your plugins are in compliance with all relevant laws and regulations
 before using them.
 */
 
-pluginInfo = {
-    'name': '${name.replaceAll("'", "\'").replace(/[\r\n]/g, '')}',
+const pluginInfo = {
+    'name': '${name.replaceAll('\'', '\'').replace(/[\r\n]/g, '')}',
     'description': 'enter a description',
     'version': '1.0.0',
     'author': 'enter your name'
@@ -36,12 +36,12 @@ function logic(url, html, response, callback) {
 
 module.exports = {pluginInfo, logic}
     `, (err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(`Plugin file created at ${pluginDir}/${name.toLowerCase().replaceAll(' ', '-').replaceAll('/', '-').replace(/[\r\n]/g, '')}.js`);
-        }
-      })
+		if (err) {
+			console.log(err);
+		} else {
+			console.log(`Plugin file created at ${pluginDir}/${name.toLowerCase().replaceAll(' ', '-').replaceAll('/', '-').replace(/[\r\n]/g, '')}.js`);
+		}
+	});
 }
 
-module.exports = {generatePlugin}
+module.exports = {generatePlugin};

@@ -9,12 +9,14 @@ your plugins are in compliance with all relevant laws and regulations
 before using them.
 */
 
-pluginInfo = {
-    'name': 'tagfinder',
-    'description': 'enter a description',
-    'version': '1.0.0',
-    'author': 'enter your name'
-}
+const cheerio = require('cheerio');
+
+const pluginInfo = {
+	'name': 'tagfinder',
+	'description': 'enter a description',
+	'version': '1.0.0',
+	'author': 'enter your name'
+};
 
 /**
 * @param {string} url The target url.
@@ -23,28 +25,28 @@ pluginInfo = {
 * @param {function} callback Store the loot harvested
 */
 function logic(url, html, response, callback) {
-    const $ = cheerio.load(html);
-    let tags = {};
-    $('*').each((i, element) => {
-        let tag = $(element).get(0).tagName;
-        if (tags[tag]) {
-            tags[tag]++;
-        } else {
-            tags[tag] = 1;
-        }
-    });
+	const $ = cheerio.load(html);
+	let tags = {};
+	$('*').each((i, element) => {
+		let tag = $(element).get(0).tagName;
+		if (tags[tag]) {
+			tags[tag]++;
+		} else {
+			tags[tag] = 1;
+		}
+	});
 
-    let max = 0;
-    let mostUsedTag;
-    for (let tag in tags) {
-        if (tags[tag] > max) {
-            max = tags[tag];
-            mostUsedTag = tag;
-        }
-    }
+	let max = 0;
+	let mostUsedTag;
+	for (let tag in tags) {
+		if (tags[tag] > max) {
+			max = tags[tag];
+			mostUsedTag = tag;
+		}
+	}
 
-    callback(mostUsedTag)
+	callback(mostUsedTag);
 }
 
-module.exports = {pluginInfo, logic}
+module.exports = {pluginInfo, logic};
     
