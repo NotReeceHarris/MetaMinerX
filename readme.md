@@ -18,13 +18,13 @@ Before scraping the internet, you'll need to crawl it first. This can be done by
 
 ## Plugins
 
-Plugins are custom-made scripts or software that allow the web crawler to extract specific data from the web pages. To create a plugin, first, run the script and select option 4 "Create plugin". Then, continue by entering a plugin name. Once the plugin has been generated, follow the output file path to find your plugin file in the `./plugins` directory.
+**Created a plugin? your welcome to create a pull request and add it to the [plugins branch](https://github.com/NotReeceHarris/MetaMinerX/tree/plugins).**
+
+Plugins are custom-made scripts or software that allow the web crawler to extract specific data from the web pages. To create a plugin, first, run the script and select option 4 "Create plugin". Then, continue by entering a plugin name. Once the plugin has been generated, follow the output file path to find your plugin file in the `./plugins` directory, When storing data outside the database please automatically create a folder within the `./data` and append any data there.
 
 It's important to note that when creating plugins, it's crucial to consider the legality of your code. Make sure you are not breaking any scraping laws or copyright infringement.
 
 You can easily disable a plugin by adding an underscore (_) at the start of the file name. For example, `plugin.js` will run while `_plugin.js` will not run.
-
-> When storing data outside the database please automatically create a folder within the `./data` and append any data there.
 
 Here is an example of a plugin that will find the most common used html tag:
 ```js
