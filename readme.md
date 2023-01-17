@@ -2,19 +2,21 @@
 
 ## What will not be accepted as a community plugin
 
-Any plugin that breaks the law for example copyright scraping will not be accepted and may even result in a repo ban, any plugin that stores personal such as names, passwords, addresses will not be accepted.
+Plugins that violate laws, such as those involving copyright infringement, will not be accepted and may result in a repository ban. Additionally, plugins that store personal information, such as names, passwords, and addresses, will not be accepted.
 
 ## What will be accepted as a community plugin
 
-Any plugin that uses algorithms to generate unique data for example collecting styling trends is most likely to be accepted.
+Plugins that utilize algorithms to create unique data, such as those that collect and analyze styling trends, are more likely to be accepted and well-received by users.
 
 ## Creating a plugin 
 
-Plugins are custom-made scripts or software that allow the web crawler to extract specific data from the web pages. To create a plugin, first, run the script and select option 4 "Create plugin". Then, continue by entering a plugin name. Once the plugin has been generated, follow the output file path to find your plugin file in the ./plugins directory.
+To create a plugin for this program, you must first run the script and select the option 4 "Create plugin". This will prompt you to enter a name for your plugin, for example `Tag Finder`. Once you enter the name and click enter, a file will be created in the `./plugins` directory. The file name will be a "slug" version of the plugin's name, such as `tag-finder.js`. 
 
-It's important to note that when creating plugins, it's crucial to consider the legality of your code. Make sure you are not breaking any scraping laws or copyright infringement.
+The file will already contain the boilerplate code for a plugin. Keep in mind that this program is not intended for illegal acts and is only meant for data scientists and researchers to generate data. 
 
-If you have data that cannot be stored within the dataase for example images, please automatically generate folder within the `./data` directory when naming the folder try name it something linking to your plugin name.
+To store data within the database, simply return the data in the callback. For example, `callback({'hello': 'world'})`. Note that the data must be able to be converted to JSON. If you need to store data outside of the database, such as images, please automatically generate a folder named after the plugin in the directory `./data`. For example, `./data/tagfinder`. 
+
+It is important to note that the above is a basic guide to creating a plugin, and more in-depth coding knowledge and understanding of the program's structure may be necessary to create a functional and effective plugin.
 
 Here is an example plugin that finds the most used html tag in a webpage:
 ```js
