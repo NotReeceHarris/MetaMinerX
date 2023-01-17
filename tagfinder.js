@@ -1,11 +1,4 @@
-const fs = require('fs');
-
-const pluginDir = './plugins'
-
-if (!fs.existsSync(pluginDir)) {fs.mkdirSync(pluginDir);}     
-
-function generatePlugin(name) {
-    fs.writeFile(`${pluginDir}/${name.toLowerCase().replaceAll(' ', '-').replaceAll('/', '-').replace(/[\r\n]/g, '')}.js`,`/* 
+/* 
 Disclaimer: By using our open source program to create plugins, 
 you are agreeing to comply with all applicable laws and regulations 
 regarding web scraping, including but not limited to copyright laws. 
@@ -17,10 +10,10 @@ before using them.
 */
 
 pluginInfo = {
-    'name': '${name.replaceAll("'", "\'").replace(/[\r\n]/g, '')}',
-    'description': 'enter a description',
+    'name': 'Tag finder',
+    'description': 'This plugin will find the most common tags used in html',
     'version': '1.0.0',
-    'author': 'enter your name'
+    'author': 'Reece Harris'
 }
 
 /**
@@ -30,18 +23,27 @@ pluginInfo = {
 * @param {function} callback Store the loot harvested
 */
 function logic(url, html, response, callback) {
-    /* Your code here */
-    callback('data')
+    const $ = cheerio.load(html);
+    let tags = {};
+    $('*').each((i, element) => {
+        let tag = $(element).get(0).tagName;
+        if (tags[tag]) {
+            tags[tag]++;
+        } else {
+            tags[tag] = 1;
+        }
+    });
+
+    let max = 0;
+    let mostUsedTag;
+    for (let tag in tags) {
+        if (tags[tag] > max) {
+            max = tags[tag];
+            mostUsedTag = tag;
+        }
+    }
+
+    callback(mostUsedTag)
 }
 
 module.exports = {pluginInfo, logic}
-    `, (err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(`Plugin file created at ${pluginDir}/${name.toLowerCase().replaceAll(' ', '-').replaceAll('/', '-').replace(/[\r\n]/g, '')}.js`);
-        }
-      })
-}
-
-module.exports = {generatePlugin}
