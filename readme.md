@@ -18,6 +18,8 @@ If you have data that cannot be stored within the dataase for example images, pl
 
 Here is an example plugin that finds the most used html tag in a webpage:
 ```js
+const cheerio = require('cheerio');
+
 pluginInfo = {
     'name': 'Tag finder',
     'description': 'This plugin will find the most common tags used in html',
