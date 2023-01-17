@@ -1,4 +1,4 @@
-![](https://i.imgur.com/kI92F6h.png)
+![](https://github.com/NotReeceHarris/NotReeceHarris/blob/main/cdn/metaminerxbanner.png?raw=true)
 
 ## Installation
 
