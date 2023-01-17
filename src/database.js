@@ -1,39 +1,46 @@
 const sqlite3 = require('sqlite3').verbose();
+const fs = require('fs');
+
+const folder = './data';
 const dbFile = './data/vault.db';
 
-let db = new sqlite3.Database(dbFile, (err) => {
-    if (err) {
-        console.error(err.message);
-    }
-});
+const db = new sqlite3.Database(dbFile, (err) => {if (err) {console.error(err.message);}});
 
-function insertScan(url) {
+function insertScan(url, httpCode) {
     db.run(`DELETE FROM queue WHERE url = ?`, [url], (err) => {});
-    db.run(`INSERT INTO scanned (url) VALUES (?)`, [url], (err) => {});
+    db.run(`INSERT INTO scanned (url, httpCode, scraped) VALUES (?,?,?)`, [url, httpCode,0], (err) => {});
 }
 
-function insertQueue(url) {
-    db.run(`INSERT INTO queue (url) VALUES (?)`, [url], (err) => {
-        if (err) {
-            console.error(err.message);
-        }
-    });
+function insertScrape(url) {
+    db.run(`UPDATE scanned SET scraped = 1 WHERE url = ?`, [url], (err) => {});
+}
+
+function insertQueue(url, type) {
+    db.run(`INSERT INTO queue (url, type) VALUES (?,?)`, [url,  type], (err) => {if (err) {console.error(err.message);}});
 }
 
 function insertEmails(email, url) {
     db.all(`SELECT id FROM scanned WHERE url = ?`, [url], (err, rows) => {
-        if (err) {
-            console.error(err.message);
+        if (err) {console.error(err.message);
         } else {
             if (rows.length > 0) {
-                db.run(`INSERT INTO emails (email, urlID) VALUES (?,?)`, [email, rows[0].id], (err) => {
-                    if (err) {
-                        console.error(err.message);
-                    }
+                db.run(`INSERT INTO loot (urlID, dataType, data) VALUES (?,?,?)`, [rows[0].id, 'email', email], (err) => {
                 });
             }
         }
     });
 }
 
-module.exports = {insertScan, insertQueue, insertEmails}
+function insertData(url, dataType, data, hash) {
+    db.all(`SELECT id FROM scanned WHERE url = ?`, [url], (err, rows) => {
+        if (err) {console.error(err.message);
+        } else {
+            if (rows.length > 0) {
+                db.run(`INSERT INTO loot (urlID, dataType, data, hash) VALUES (?,?,?,?)`, [rows[0].id, dataType, data, hash], (err) => {
+                });
+            }
+        }
+    });
+}
+
+module.exports = {insertScan, insertQueue, insertEmails, insertData, insertScrape}
