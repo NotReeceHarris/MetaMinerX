@@ -53,6 +53,7 @@ function processQueue(url='', runVerbose=false) {
 
 	if (url != '') {
 		queue.add(url);
+		database.insertQueue(url, 'crawl');
 	}
 
 	if (queue.size > 0) {

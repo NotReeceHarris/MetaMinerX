@@ -4,7 +4,6 @@
 const readline = require('readline');
 const ascii = require('./src/ascii');
 const fs = require('fs');
-const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 
 const rl = readline.createInterface({
