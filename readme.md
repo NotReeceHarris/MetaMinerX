@@ -1,5 +1,9 @@
 ![](https://github.com/NotReeceHarris/NotReeceHarris/blob/main/cdn/metaminerxbanner.png?raw=true)
 
+<p align="center">
+<a href="#installation">Installation</a> | <a href="#usage">Usage</a> | <a href="#plugins">Plugins</a> | <a href="#access-collected-data">Access collected data</a> | <a href="#performance">Performance</a> | <a href="#discalmer">Discalmer</a>
+</p>
+
 ## Installation
 
 Before you can use this program, you'll need to have Node.js installed on your computer. Node.js version 0.10 or higher is required. You can download and install Node.js from the official website (https://nodejs.org/).
@@ -16,8 +20,9 @@ This command will install all the necessary dependencies for the program to run.
 
 Before scraping the internet, you'll need to crawl it first. This can be done by selecting option 1 "Start crawling" when running the script. You'll need to input a starting URL, and the program will automatically crawl all links found on the page. Please note that this includes assets and other non-essential links. You can configure blacklist domains and configure targets to avoid unnecessary crawling. Once you have crawled a significant amount of data, you can start scraping. Please note that this program does not have scraping functionality on its own. However, there are two pre-made scraping plugins available on Github: "Email Scraper" which can scrape all emails from a page, and "Page Saver" which can take screenshots of every webpage.
 
-## Plugins
+![](https://github.com/NotReeceHarris/NotReeceHarris/blob/main/cdn/1ccc7ea8eabb82dfd830c3ca5db85587.gif?raw=true)
 
+## Plugins
 
 Plugins are custom-made scripts or software that allow the web crawler to extract specific data from the web pages. To create a plugin, first, run the script and select option 4 "Create plugin". Then, continue by entering a plugin name. Once the plugin has been generated, follow the output file path to find your plugin file in the `./plugins` directory.
 
@@ -33,7 +38,7 @@ All data collected by this program is stored within the ./data directory. You ca
 
 scanned | _ | _
 --- | --- | ---
-id | INTEGER | `PRIMARY KEY` `AUTOINCREMENT`
+id | `INTEGER` | `PRIMARY KEY` `AUTOINCREMENT`
 url | `TEXT` | `NOT NULL`
 httpCode | `VARCHAR(255)` | `NOT NULL`
 scraped | `INTEGER(1)` | `NOT NULL`
