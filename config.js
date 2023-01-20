@@ -24,7 +24,9 @@ const config = {
 
 /* The logic will come after the config */
 
-function logic(url){
+function logic(url, queue){
+	// queue is immutable
+
 	// return true to save url
 	return url != 'https://github.com/NotReeceHarris/MetaMinerX';
 }

@@ -18,6 +18,7 @@ function crawl(html, queue, visitedUrls) {
 			if (validator.isValidUrl(link)) {
 				if (!visitedUrls.has(link) && !queue.has(link)) {
 					let stop = false;
+					const immutableQueue = queue;
 
 					/* =================== CONFIGS =================== */
 
@@ -51,14 +52,14 @@ function crawl(html, queue, visitedUrls) {
 									if (config.config.extension.whitelist.length > 0) {
 										config.config.extension.whitelist.forEach(whitelistExtension => {
 											if (new URL(whitelistExtension).hostname == new URL(link).hostname) {
-												if (config.logic(link)) {
+												if (config.logic(link, immutableQueue)) {
 													database.insertQueue(link, 'crawl');
 													queue.add(link);
 												}
 											}
 										});
 									} else {
-										if (config.logic(link)) {
+										if (config.logic(link, immutableQueue)) {
 											database.insertQueue(link, 'crawl');
 											queue.add(link);
 										}
@@ -69,14 +70,14 @@ function crawl(html, queue, visitedUrls) {
 							if (config.config.extension.whitelist.length > 0) {
 								config.config.extension.whitelist.forEach(whitelistExtension => {
 									if (new URL(whitelistExtension).hostname == new URL(link).hostname) {
-										if (config.logic(link)) {
+										if (config.logic(link, immutableQueue)) {
 											database.insertQueue(link, 'crawl');
 											queue.add(link);
 										}
 									}
 								});
 							} else {
-								if (config.logic(link)) {
+								if (config.logic(link, immutableQueue)) {
 									database.insertQueue(link, 'crawl');
 									queue.add(link);
 								}
